@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Black Cafe</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+<div class="container">
+
+<header class="site-header">
+  <h1>☕ Black Cafe</h1>
+  <nav>
+    <button class="nav-btn active" data-page="menu">Menu</button>
+    <button class="nav-btn" data-page="cart">
+      Cart (<span id="cart-count">0</span>)
+    </button>
+    <button class="nav-btn" data-page="manage">Manage</button>
+  </nav>
+</header>
+
+<!-- MENU -->
+<section id="menu-page" class="page active">
+  <div class="menu-grid" id="menu-grid"></div>
+</section>
+
+<!-- CART -->
+<section id="cart-page" class="page">
+  <div id="cart-items"></div>
+  <p><strong>Total ₹ <span id="total">0.00</span></strong></p>
+  <button onclick="printBill()">Print Bill</button>
+  <button id="pay-now-btn">Pay Now</button>
+</section>
+
+<!-- MANAGE -->
+<section id="manage-page" class="page">
+  <div class="manage-container">
+
+    <!-- FORM -->
+    <div class="manage-form-card">
+      <form id="manage-form">
+        <input type="hidden" id="edit-id">
+
+        <label>Item Name</label>
+        <input id="item-name" placeholder="Tea / Coffee" required>
+
+        <label>Price (₹)</label>
+        <input id="item-price" type="number" placeholder="20" required>
+
+        <label>Image Path</label>
+        <input id="item-img" placeholder="images/tea.jpg">
+
+        <div class="form-actions">
+          <button type="submit">Save Item</button>
+          <button type="button" class="secondary" onclick="resetForm()">Reset</button>
+        </div>
+      </form>
+
+      <div class="monthly-box">
+        Monthly Sales  
+        <span>₹ <strong id="monthly-total">0.00</strong></span>
+      </div>
+    </div>
+
+    <!-- LIST -->
+    <div class="manage-list-card">
+      <h3>Menu Items</h3>
+      <div id="manage-list" class="manage-list"></div>
+    </div>
+
+  </div>
+</section>
+
+</div>
+
+<!-- PAYMENT MODAL -->
+<div id="payment-modal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h2>Payment</h2>
+    <p>Total ₹ <span id="payment-total">0.00</span></p>
+    <img src="qrcode.jpg" width="250">
+    <button id="confirm-payment">Confirm Payment</button>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
